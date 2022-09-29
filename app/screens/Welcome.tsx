@@ -1,9 +1,11 @@
 import React from "react";
 import { ImageBackground, StyleSheet, View, Image, Text } from "react-native";
+import AppButton from "../components/AppButton";
 
 const Welcome = () => {
   return (
     <ImageBackground
+      blurRadius={5}
       style={styles.background}
       source={require("../../assets/background.jpg")}
     >
@@ -12,10 +14,12 @@ const Welcome = () => {
           style={styles.logo}
           source={require("../../assets/logo-red.png")}
         />
-        <Text>Sell Anythin Online</Text>
+        <Text style={styles.tagline}>Sell Anything Online</Text>
       </View>
-      <View style={styles.loginButton}></View>
-      <View style={styles.registerButton}></View>
+      <View style={styles.buttonsConatiner}>
+        <AppButton title="Login" />
+        <AppButton title="Register" color="secondary" />
+      </View>
     </ImageBackground>
   );
 };
@@ -26,10 +30,12 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
   },
-  loginButton: {
+  buttonsConatiner: {
+    padding: 20,
     width: "100%",
-    height: 70,
-    backgroundColor: "#fc5c65",
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
   logo: {
     width: 100,
@@ -40,10 +46,10 @@ const styles = StyleSheet.create({
     top: 70,
     alignItems: "center",
   },
-  registerButton: {
-    width: "100%",
-    height: 70,
-    backgroundColor: "#4ecdc4",
+  tagline: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    paddingVertical: 20,
   },
 });
 
