@@ -29,9 +29,9 @@ function Account() {
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          title="Mosh Hamedani"
-          subTitle="programmingwithmosh@gmail.com"
-          image={require("../assets/mosh.jpg")}
+          title="Sikiru olashina Quadri"
+          subTitle="olashina201@gmail.com"
+          image={require("../../assets/my.jpeg")}
         />
       </View>
       <View style={styles.container}>
