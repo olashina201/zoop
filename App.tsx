@@ -7,6 +7,7 @@ import Icon from "./app/components/Icon";
 import ListItem from "./app/components/ListItem";
 import Screen from "./app/components/Screen";
 import Account from "./app/screens/Account";
+import Listings from "./app/screens/Listing";
 import ListingDetails from "./app/screens/ListingDetails";
 import Messages from "./app/screens/Messages";
 import ViewImage from "./app/screens/ViewImage";
@@ -17,7 +18,7 @@ export default function App() {
     // <Screen>
     //   <Icon name="email" size={50} backgroundColor="red" iconColor="white" />
     // </Screen>
-    <Account />
+    <Listings />
   );
 }
 
