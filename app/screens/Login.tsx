@@ -24,28 +24,30 @@ const Login = () => {
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        {({ handleChange, handleSubmit, errors }) => (
+        {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
           <>
             <AppTextInput
               autoCapitalize="none"
               autoCorrect={false}
               icon="email"
               keyboardType="email-address"
+              onBlur={() => setFieldTouched("email")}
               placeholder="Email"
               textContentType="emailAddress"
               onChangeText={handleChange("email")}
             />
-            <ErrorMessage error={errors.email} />
+            {<ErrorMessage error={errors.email} visible={touched.email} />}
             <AppTextInput
               autoCapitalize="none"
               autoCorrect={false}
               icon="lock"
+              onBlur={() => setFieldTouched("password")}
               placeholder="Password"
               textContentType="passowrd"
               secureTextEntry
               onChangeText={handleChange("password")}
             />
-            <ErrorMessage error={errors.password} />
+            <ErrorMessage error={errors.password} visible={touched.email} />
             <AppButton title="Login" onPress={handleSubmit} />
           </>
         )}
