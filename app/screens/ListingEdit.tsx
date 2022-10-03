@@ -1,7 +1,13 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
-import { AppForm, AppFormField, AppFormPicker, SubmitButton } from "../components/forms";
+
+import {
+  AppForm as Form,
+  AppFormField as FormField,
+  AppFormPicker as Picker,
+  SubmitButton,
+} from "../components/forms";
 import Screen from "../components/Screen";
 
 const validationSchema = Yup.object().shape({
@@ -20,7 +26,7 @@ const categories = [
 const ListingEdit = () => {
   return (
     <Screen style={styles.container}>
-      <AppForm
+      <Form
         initialValues={{
           title: "",
           price: "",
@@ -29,29 +35,32 @@ const ListingEdit = () => {
         }}
         onSubmit={(values: any) => console.log(values)}
         validationSchema={validationSchema}
-      />
-      <AppFormField maxLength={255} name="title" placeholder="Title" />
-      <AppFormField
-        keyboardType="numeric"
-        maxLength={8}
-        name="price"
-        placeholder="Price"
-      />
-      <AppFormPicker items={categories} name="category" placeholder="category" />
-      <AppFormField
-        maxLength={255}
-        multiline
-        name="description"
-        numberOfLines={3}
-        placeholder="Description"
-      />
-      <SubmitButton title="Post" />
+      >
+        <FormField maxLength={255} name="title" placeholder="Title" />
+        <FormField
+          keyboardType="numeric"
+          maxLength={8}
+          name="price"
+          placeholder="Price"
+        />
+        <Picker items={categories} name="category" placeholder="Category" />
+        <FormField
+          maxLength={255}
+          multiline
+          name="description"
+          numberOfLines={3}
+          placeholder="Description"
+        />
+        <SubmitButton title="Post" />
+      </Form>
     </Screen>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    padding: 10,
+  },
 });
 
 export default ListingEdit;
