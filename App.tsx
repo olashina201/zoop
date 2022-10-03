@@ -12,6 +12,7 @@ import Listings from "./app/screens/Listing";
 import Account from "./app/screens/Account";
 import ListingDetails from "./app/screens/ListingDetails";
 import Messages from "./app/screens/Messages";
+import Register from "./app/screens/Register";
 
 const categories = [
   { label: "Furniture", value: 1 },
@@ -22,5 +23,5 @@ const categories = [
 export default function App() {
   const [category, setCategory] = useState<any>(categories[0]);
 
-  return <ListingEdit />;
+  return <Register />;
 }
