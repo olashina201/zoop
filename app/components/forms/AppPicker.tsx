@@ -10,10 +10,10 @@ import {
   FlatList,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import defaultStyles from "../config/styles";
-import AppText from "./AppText";
-import Screen from "./Screen";
-import PickerItem from "./PickerItem";
+import defaultStyles from "../../config/styles";
+import AppText from "../AppText";
+import Screen from "../Screen";
+import PickerItem from "../PickerItem";
 
 const AppPicker = ({ icon, placeholder, items, selectedItem, onSelectItem }: any) => {
   const [modalVisible, setModalVisible] = useState(false);
