@@ -8,17 +8,25 @@ import AppTextInput from "./app/components/AppTextInput";
 import Screen from "./app/components/Screen";
 
 const categories = [
-  { label: "Furniture", value: 1},
-  { label: "Furniture", value: 2},
-  { label: "Furniture", value: 3}
-]
+  { label: "Furniture", value: 1 },
+  { label: "Furniture", value: 2 },
+  { label: "Furniture", value: 3 },
+];
 
 export default function App() {
-  const [firstName, setFirstName] = useState<string>();
+  const [category, setCategory] = useState<any>(categories[0]);
 
   return (
-    <Screen> 
-      <AppPicker items={categories} icon="apps" placeholder="Category" />
+    <Screen>
+      <AppPicker
+        selectedItem={category}
+        onSelectItem={(item: React.SetStateAction<string | undefined>) =>
+          setCategory(item)
+        }
+        items={categories}
+        icon="apps"
+        placeholder="Category"
+      />
       <AppTextInput icon="email" placeholder="Email" />
     </Screen>
   );
