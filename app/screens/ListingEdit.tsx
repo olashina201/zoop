@@ -1,8 +1,7 @@
-import { useFormikContext } from "formik";
 import React from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
-import { AppForm, AppFormField, AppPicker, SubmitButton } from "../components/forms";
+import { AppForm, AppFormField, AppFormPicker, SubmitButton } from "../components/forms";
 import Screen from "../components/Screen";
 
 const validationSchema = Yup.object().shape({
@@ -19,7 +18,6 @@ const categories = [
 ];
 
 const ListingEdit = () => {
-  const {} = useFormikContext();
   return (
     <Screen style={styles.container}>
       <AppForm
@@ -39,7 +37,7 @@ const ListingEdit = () => {
         name="price"
         placeholder="Price"
       />
-      <AppPicker items={categories} name="category" placeholder="category" />
+      <AppFormPicker items={categories} name="category" placeholder="category" />
       <AppFormField
         maxLength={255}
         multiline
