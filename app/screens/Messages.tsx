@@ -31,7 +31,7 @@ const Messages = () => {
     setMessages(messages.filter((m) => m.id !== message.id));
   };
   return (
-    <Screen style={styles.screen}>
+    <Screen>
       <FlatList
         data={messages}
         keyExtractor={(message) => message.id.toString()}

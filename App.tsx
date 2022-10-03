@@ -8,6 +8,10 @@ import AppTextInput from "./app/components/AppTextInput";
 import Screen from "./app/components/Screen";
 import Login from "./app/screens/Login";
 import ListingEdit from "./app/screens/ListingEdit";
+import Listings from "./app/screens/Listing";
+import Account from "./app/screens/Account";
+import ListingDetails from "./app/screens/ListingDetails";
+import Messages from "./app/screens/Messages";
 
 const categories = [
   { label: "Furniture", value: 1 },
@@ -18,5 +22,5 @@ const categories = [
 export default function App() {
   const [category, setCategory] = useState<any>(categories[0]);
 
-  return <ListingEdit />;
+  return <Messages />;
 }
