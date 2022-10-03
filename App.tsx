@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import AppButton from "./app/components/AppButton";
+import AppTextInput from "./app/components/AppTextInput";
 import Card from "./app/components/Card";
 import Icon from "./app/components/Icon";
 import ListItem from "./app/components/ListItem";
@@ -18,17 +19,7 @@ export default function App() {
 
   return (
     <Screen>
-      <Text>{firstName}</Text>
-      <TextInput
-        maxLength={10}
-        clearButtonMode="always"
-        onChangeText={(text: string) => setFirstName(text)}
-        placeholder="First Name"
-        style={{
-          borderBottomColor: "#ccc",
-          borderBottomWidth: 1,
-        }}
-      />
+      <AppTextInput placeholder="Username" icon="email" />
     </Screen>
   );
 }
