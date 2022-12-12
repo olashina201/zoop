@@ -33,9 +33,10 @@ export default function App() {
     setImageUris(imageUris.filter((imageUris: any) => imageUris !== uri));
   };
 
-  return (
-    <Screen>
-      <ImageInputList imageUris={imageUris} onAddImage={handleAdd} onRemoveImage={handleRemove} />
-    </Screen>
-  );
+  // return (
+  //   <Screen>
+  //     <ImageInputList imageUris={imageUris} onAddImage={handleAdd} onRemoveImage={handleRemove} />
+  //   </Screen>
+  // );
+  return <ListingEdit />;
 }
