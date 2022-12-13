@@ -46,7 +46,7 @@ const TabNavigator = () => (
       inactiveTintColor: "black",
     }}
   >
-    <Tab.Screen name="Tweets" component={Tweets} options={{
+    <Tab.Screen name="Tweets" component={StackNavigator} options={{
       tabBarIcon: ({ size, color }: any) => <MaterialCommunityIcons name="home" size={size} color={color} />,
     }} />
     <Tab.Screen name="TweetDetails" component={TweetDetails} options={{
