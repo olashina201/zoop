@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Button, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 import Screen from "./app/components/Screen";
-import ListingEdit from "./app/screens/ListingEdit";
 
 const Tweets = ({ navigation }: any) => (
   <Screen>
@@ -37,13 +38,22 @@ const StackNavigator = () => (
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
-  <Tab.Navigator>
-    <Tab.Screen name="Tweets" component={Tweets} />
-    <Tab.Screen name="TweetDetails" component={TweetDetails} />
-    <Tab.Screen name="TweetDetails1" component={TweetDetails} />
-    <Tab.Screen name="TweetDetails2" component={TweetDetails} />
+  <Tab.Navigator
+    tabBarOptions={{
+      activeBackgroundColor: "tomato",
+      activeTintColor: "white",
+      inactiveBackgroundColor: "#eee",
+      inactiveTintColor: "black",
+    }}
+  >
+    <Tab.Screen name="Tweets" component={Tweets} options={{
+      tabBarIcon: ({ size, color }: any) => <MaterialCommunityIcons name="home" size={size} color={color} />,
+    }} />
+    <Tab.Screen name="TweetDetails" component={TweetDetails} options={{
+      tabBarIcon: ({ size, color }: any) => <MaterialCommunityIcons name="account" size={size} color={color} />,
+    }} />
   </Tab.Navigator>
-)
+);
 
 export default function App() {
   return (
