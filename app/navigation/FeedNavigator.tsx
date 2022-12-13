@@ -6,12 +6,11 @@ import ListingDetails from "../screens/ListingDetails";
 const Stack = createStackNavigator();
 
 const FeedNavigator = () => (
-  <Stack.Navigator mode="modal">
+  <Stack.Navigator mode="modal" screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Listings" component={Listings} />
     <Stack.Screen
       name="ListingDetails"
       component={ListingDetails}
-      options={{ headerShown: false }}
     />
   </Stack.Navigator>
 );
