@@ -9,7 +9,7 @@ const ListingDetails = ({ route }: any) => {
 
   return (
     <View>
-      <Image style={styles.image} source={listings.image} />
+      <Image style={styles.image} source={{ uri: listings.image }} />
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>{listings.title}</AppText>
         <AppText style={styles.price}>{listings.price}</AppText>
