@@ -13,6 +13,7 @@
     "@react-navigation/bottom-tabs": "^5.x",
     "@react-navigation/native": "^5.x",
     "@react-navigation/stack": "^5.x",
+    "apisauce": "^2.1.6",
     "expo": "~46.0.13",
     "expo-constants": "^13.2.4",
     "expo-image-picker": "^14.0.2",
