@@ -1,9 +1,5 @@
 import apiClient from "./client";
 
-const endpoint = '/api/listings';
+const endpoint = '/products?limit=5';
 
-const getListings = () => apiClient.get(endpoint)
-
-export default {
-    getListings
-}
+export const getListings = () => apiClient.get(endpoint)

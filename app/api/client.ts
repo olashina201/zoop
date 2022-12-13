@@ -1,7 +1,7 @@
 import { create } from "apisauce";
 
 const apiClient = create({
-    baseURL: "http://localhost"
+    baseURL: "https://fakestoreapi.com"
 })
 
 export default apiClient;
