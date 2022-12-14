@@ -9,28 +9,15 @@ import routes from "../navigation/routes";
 import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
 import ActivityIndicator from "../components/ActivityIndicator";
+import useApi from "../hooks/useApi";
 
 function Listings({ navigation }: any) {
-  const [listings, setListings] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  console.log(error)
-
+  const {data: listings, error, loading, request: loadListings } = useApi(api.getListings);
   useEffect(() => {
     loadListings();
   }, []);
 
-  const loadListings = async () => {
-    setLoading(true);
-    const response = await api.getListings();
-    setLoading(false);
-
-    if (!response.ok) return setError(true);
-
-    setError(false);
-    setListings(response.data as any);
-  };
+  
   return (
     <Screen style={styles.screen}>
       {error && (
@@ -42,8 +29,8 @@ function Listings({ navigation }: any) {
       <ActivityIndicator visible={loading} />
       <FlatList
         data={listings}
-        keyExtractor={(listing) => listing.id.toString()}
-        renderItem={({ item }) => (
+        keyExtractor={(listing: any) => listing.id.toString()}
+        renderItem={({ item }: any) => (
           <Card
             title={item.title}
             subTitle={"$" + item.price}
