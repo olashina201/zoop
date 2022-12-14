@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
 import * as api from "../api/listing";
@@ -14,6 +14,7 @@ import {
 import FormImagePicker from "../components/forms/FormImagePicker";
 import Screen from "../components/Screen";
 import useLocation from "../hooks/useLocation";
+import Upload from "./Upload";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -34,15 +35,25 @@ const categories = [
 
 const ListingEdit = () => {
   const location = useLocation();
+  const [uploadVisible, setUploadVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const handleSubmit = async (listing: any) => {
-    const result = await api.addListings({ ...listing, location }, (progress: any) => console.log(progress));
+    setProgress(0);
+    setUploadVisible(true); 
+    const result = await api.addListings(
+      { ...listing, location },
+      (progress: any) => setProgress(progress)
+    );
+    setUploadVisible(false);
+
     if (!result.ok) return alert("could not add listings");
-    alert("Success")
+    alert("Success");
   };
 
   return (
     <Screen style={styles.container}>
+      <Upload progress={progress} visible={uploadVisible} />
       <Image
         style={styles.logo}
         source={require("../../assets/logo-red.png")}
