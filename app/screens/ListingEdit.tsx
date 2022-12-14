@@ -38,7 +38,7 @@ const ListingEdit = () => {
   const [uploadVisible, setUploadVisible] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const handleSubmit = async (listing: any) => {
+  const handleSubmit = async (listing: any, { resetForm }) => {
     setProgress(0);
     setUploadVisible(true);
     const result = await api.addListings(
@@ -50,6 +50,8 @@ const ListingEdit = () => {
       setUploadVisible(false);
       return alert("could not add listings");
     }
+
+    resetForm();
   };
 
   return (
