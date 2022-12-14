@@ -40,20 +40,21 @@ const ListingEdit = () => {
 
   const handleSubmit = async (listing: any) => {
     setProgress(0);
-    setUploadVisible(true); 
+    setUploadVisible(true);
     const result = await api.addListings(
       { ...listing, location },
       (progress: any) => setProgress(progress)
     );
-    setUploadVisible(false);
-
-    if (!result.ok) return alert("could not add listings");
-    alert("Success");
+    
+    if (!result.ok) {
+      setUploadVisible(false);
+      return alert("could not add listings");
+    }
   };
 
   return (
     <Screen style={styles.container}>
-      <Upload progress={progress} visible={uploadVisible} />
+      <Upload onDone={() => setUploadVisible(false)} progress={progress} visible={uploadVisible} />
       <Image
         style={styles.logo}
         source={require("../../assets/logo-red.png")}
