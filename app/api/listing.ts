@@ -20,6 +20,6 @@ export const addListings = (listing: any, onUploadProgress: any) => {
     if(listing.location) data.append('location', JSON.stringify(listing.location));
 
     return apiClient.post('/api/', data, {
-        onUploadProgress: (progress) => onUploadProgress(progress.loaded/progress.total)
+        onUploadProgress: (progress: any) => onUploadProgress(progress.loaded/progress.total)
     });
 }
