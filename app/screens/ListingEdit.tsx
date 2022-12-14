@@ -36,7 +36,7 @@ const ListingEdit = () => {
   const location = useLocation();
 
   const handleSubmit = async (listing: any) => {
-    const result = await api.addListings({ ...listing, location });
+    const result = await api.addListings({ ...listing, location }, (progress: any) => console.log(progress));
     if (!result.ok) return alert("could not add listings");
     alert("Success")
   };

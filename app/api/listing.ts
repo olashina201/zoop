@@ -4,7 +4,7 @@ const endpoint = '/products?limit=5';
 
 export const getListings = () => apiClient.get(endpoint)
 
-export const addListings = (listing: any) => {
+export const addListings = (listing: any, onUploadProgress: any) => {
     const data = new FormData();
     data.append('title', listing.title);
     data.append('price', listing.price);
@@ -19,5 +19,7 @@ export const addListings = (listing: any) => {
 
     if(listing.location) data.append('location', JSON.stringify(listing.location));
 
-    return apiClient.post('/api/', data);
+    return apiClient.post('/api/', data, {
+        onUploadProgress: (progress) => onUploadProgress(progress.loaded/progress.total)
+    });
 }
