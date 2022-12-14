@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import * as api from "../api/listing";
 
 import Screen from "../components/Screen";
@@ -8,6 +8,7 @@ import colors from "../config/colors";
 import routes from "../navigation/routes";
 import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
+import ActivityIndicator from "../components/ActivityIndicator";
 
 function Listings({ navigation }: any) {
   const [listings, setListings] = useState([]);
@@ -38,7 +39,7 @@ function Listings({ navigation }: any) {
           <AppButton title="Retry" onPress={loadListings} />
         </>
       )}
-      <ActivityIndicator animating={loading} size="large" />
+      <ActivityIndicator visible={loading} />
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
