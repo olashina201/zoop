@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { useNetInfo } from "react-native-community/netinfo";
-import { AsyncStorage } from "react-native";
+import { useNetInfo } from "@react-native-community/netinfo";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
 
