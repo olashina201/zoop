@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
+import * as api from "../api/listing";
 
 import CategoryPickerItem from "../components/CategoryPickerItem";
 
@@ -19,7 +20,7 @@ const validationSchema = Yup.object().shape({
   price: Yup.string().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
   category: Yup.string().required().nullable().label("Category"),
-  images: Yup.array().min(1, "Please select at least one image")
+  images: Yup.array().min(1, "Please select at least one image"),
 });
 
 const categories = [
@@ -34,6 +35,12 @@ const categories = [
 const ListingEdit = () => {
   const location = useLocation();
 
+  const handleSubmit = async (listing: any) => {
+    const result = await api.addListings({ ...listing, location });
+    if (!result.ok) return alert("could not add listings");
+    alert("Success")
+  };
+
   return (
     <Screen style={styles.container}>
       <Image
@@ -46,9 +53,9 @@ const ListingEdit = () => {
           price: "",
           description: "",
           category: null,
-          images: []
+          images: [],
         }}
-        onSubmit={(values: any) => console.log(location)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <FormImagePicker name="images" />
