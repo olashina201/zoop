@@ -1,64 +1,17 @@
-import React, { useState } from "react";
-import { Button, Text } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-
-import Screen from "./app/components/Screen";
-import AuthNavigator from "./app/navigation/AuthNavigator";
+import { useNetInfo } from "react-native-community/netinfo";
+import { AsyncStorage } from "react-native";
 import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
 
-const Tweets = ({ navigation }: any) => (
-  <Screen>
-    <Text>Tweets</Text>
-    <Button
-      title="View Tweet"
-      onPress={() => navigation.navigate("TweetDetails")}
-    />
-  </Screen>
-);
-
-const TweetDetails = () => (
-  <Screen>
-    <Text>Tweet Details</Text>
-  </Screen>
-);
-
-const Stack = createStackNavigator();
-const StackNavigator = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: { backgroundColor: "dodgerblue" },
-      headerTintColor: "white",
-    }}
-  >
-    <Stack.Screen name="Tweets" component={Tweets} />
-    <Stack.Screen name="TweetDetails" component={TweetDetails} />
-  </Stack.Navigator>
-);
-
-const Tab = createBottomTabNavigator();
-const TabNavigator = () => (
-  <Tab.Navigator
-    tabBarOptions={{
-      activeBackgroundColor: "tomato",
-      activeTintColor: "white",
-      inactiveBackgroundColor: "#eee",
-      inactiveTintColor: "black",
-    }}
-  >
-    <Tab.Screen name="Tweets" component={StackNavigator} options={{
-      tabBarIcon: ({ size, color }: any) => <MaterialCommunityIcons name="home" size={size} color={color} />,
-    }} />
-    <Tab.Screen name="TweetDetails" component={TweetDetails} options={{
-      tabBarIcon: ({ size, color }: any) => <MaterialCommunityIcons name="account" size={size} color={color} />,
-    }} />
-  </Tab.Navigator>
-);
-
 export default function App() {
+  const netInfo = useNetInfo();
+  const demo = async () => {
+    await AsyncStorage.setItem("person", JSON.stringify({ id: 1}));
+    const value: any = await AsyncStorage.getItem("person");
+    const person = JSON.parse(value);
+  }
   return (
     <NavigationContainer theme={navigationTheme}>
       <AppNavigator />
