@@ -18,7 +18,7 @@ const AppFormPicker = ({
       <AppPicker
         items={items}
         numberOfColumns={numberOfColumns}
-        onSelectItem={(item: any) => setFieldValue(name, item.label)}
+        onSelectItem={(item: any) => setFieldValue(name, item)}
         PickerItemComponent={PickerItemComponent}
         placeholder={placeholder}
         selectedItem={values[name]}
