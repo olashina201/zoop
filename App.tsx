@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 
 import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
@@ -22,7 +22,14 @@ export default function App() {
   //   restoreToken();
   // }, [])
 
-  if (!isReady) return <AppLoading startAsync={restoreUser} onFinish={() =>  setIsReady(true)} />;
+  if (!isReady)
+    return (
+      <AppLoading
+        startAsync={restoreUser}
+        onFinish={() => setIsReady(true)}
+        onError={(err) => console.log(err)}
+      />
+    );
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

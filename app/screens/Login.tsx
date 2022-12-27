@@ -19,11 +19,12 @@ const Login = () => {
   const { login } = useAuth();
   const [loginFailed, setLoginFailed] = useState(false);
 
-  const handleSubmit = async ({ username, password }: any) => {
-    const result = await authApi.login(username, password);
+  const handleSubmit = async ({ email, password }: any) => {
+    const result = await authApi.login(email, password);
     if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
-    login(result.data.token);
+    console.log(result.data.accessToken);
+    login(result.data.accessToken);
   };
 
   return (
@@ -33,20 +34,20 @@ const Login = () => {
         source={require("../../assets/logo-red.png")}
       />
       <AppForm
-        initialValues={{ username: "", password: "" }}
+        initialValues={{ email: "", password: "" }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <ErrorMessage
-          error="Invalid username or password"
+          error="Invalid email or password"
           visible={loginFailed}
         />
         <AppFormField
           autoCapitalize="none"
           autoCorrect={false}
           icon="email"
-          name="username"
-          placeholder="Username"
+          name="email"
+          placeholder="Email"
         />
         <AppFormField
           autoCapitalize="none"
@@ -55,7 +56,7 @@ const Login = () => {
           name="password"
           placeholder="Password"
           textContentType="passowrd"
-          // secureTextEntry
+          secureTextEntry
         />
         <SubmitButton title="Login" />
       </AppForm>

@@ -1,8 +1,8 @@
 import apiClient from "./client";
 
-const BASE_URL = "https://fakestoreapi.com";
+const BASE_URL = "http://localhost:3000";
 
-const login = (username: string, password: string) => apiClient.post(`${BASE_URL}/auth/login`, { username, password });
+const login = (email: string, password: string) => apiClient.post(`${BASE_URL}/login`, { email, password });
 
 
 export default { login }
