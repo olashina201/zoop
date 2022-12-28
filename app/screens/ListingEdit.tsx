@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
   price: Yup.string().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
-  category: Yup.string().required().nullable().label("Category"),
+  // category: Yup.string().nullable().label("Category"),
   images: Yup.array().min(1, "Please select at least one image"),
 });
 
@@ -57,10 +57,10 @@ const ListingEdit = () => {
   return (
     <Screen style={styles.container}>
       <Upload onDone={() => setUploadVisible(false)} progress={progress} visible={uploadVisible} />
-      {/* <Image
+      <Image
         style={styles.logo}
         source={require("../../assets/logo-red.png")}
-      /> */}
+      />
       <Form
         initialValues={{
           title: "",

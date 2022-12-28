@@ -3,14 +3,14 @@ import cache from "../utility/cache";
 import authStorage from "../auth/storage";
 
 const apiClient: any = create({
-  baseURL: "https://fakestoreapi.com",
+  baseURL: "http://localhost:3000",
 });
 
 apiClient.addAsyncRequestTransform(async (request: any) => {
-    const authToken = await authStorage.getToken();
-    if (!authToken) return;
-    request.headers["x-auth-token"] = authToken;
-})
+  const authToken = await authStorage.getToken();
+  if (!authToken) return;
+  request.headers["x-auth-token"] = authToken;
+});
 
 const get = apiClient.get;
 
