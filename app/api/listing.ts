@@ -1,9 +1,7 @@
 import apiClient from "./client";
 
-const endpoint = "/products?limit=5";
-
 const BASE_URL = "http://localhost:3000";
-export const getListings = () => apiClient.get(endpoint);
+export const getListings = () => apiClient.get(`${BASE_URL}/product`);
 
 export const addListings = (listing: any, onUploadProgress: any) => {
   const data = new FormData();
