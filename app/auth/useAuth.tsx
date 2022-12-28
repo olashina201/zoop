@@ -4,7 +4,7 @@ import authStorage from "../auth/storage";
 import jwtDecode from "jwt-decode";
 
 const useAuth = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser }: any = useContext(AuthContext);
 
   const logOut = () => {
     setUser(null);

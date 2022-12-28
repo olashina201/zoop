@@ -26,11 +26,11 @@ const validationSchema = Yup.object().shape({
 
 const categories = [
   { label: "Furniture", value: 1, backgroundColor: "red", icon: "apps" },
-  { label: "Furniture", value: 2, backgroundColor: "green", icon: "email" },
-  { label: "Furniture", value: 3, backgroundColor: "blue", icon: "lock" },
-  { label: "Furniture", value: 3, backgroundColor: "blue", icon: "lock" },
-  { label: "Furniture", value: 3, backgroundColor: "blue", icon: "lock" },
-  { label: "Furniture", value: 3, backgroundColor: "blue", icon: "lock" },
+  { label: "Beauty", value: 2, backgroundColor: "green", icon: "email" },
+  { label: "Kids", value: 3, backgroundColor: "blue", icon: "lock" },
+  { label: "Electronics", value: 3, backgroundColor: "blue", icon: "lock" },
+  { label: "Computers", value: 3, backgroundColor: "blue", icon: "lock" },
+  { label: "TV", value: 3, backgroundColor: "blue", icon: "lock" },
 ];
 
 const ListingEdit = () => {
@@ -57,10 +57,10 @@ const ListingEdit = () => {
   return (
     <Screen style={styles.container}>
       <Upload onDone={() => setUploadVisible(false)} progress={progress} visible={uploadVisible} />
-      <Image
+      {/* <Image
         style={styles.logo}
         source={require("../../assets/logo-red.png")}
-      />
+      /> */}
       <Form
         initialValues={{
           title: "",

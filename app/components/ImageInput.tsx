@@ -1,24 +1,24 @@
+import React, { useEffect } from "react";
 import {
-  Text,
-  StyleSheet,
   View,
+  StyleSheet,
   Image,
   TouchableWithoutFeedback,
   Alert,
 } from "react-native";
-import React, { Component, useEffect, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
+
 import colors from "../config/colors";
 
-export default function ImageInput({ imageUri, onChangeImage }: any) {
-
+function ImageInput({ imageUri, onChangeImage }: any) {
   useEffect(() => {
     requestPermission();
-  }, [])
+  }, []);
+
   const requestPermission = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-    if (!granted) alert("you need permission to access gallery");
+    if (!granted) alert("You need to enable permission to access the library.");
   };
 
   const handlePress = () => {
@@ -34,20 +34,23 @@ export default function ImageInput({ imageUri, onChangeImage }: any) {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        quality: 0.5,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
       });
-      if (result.canceled) onChangeImage(result.assets);
+      if (!result.cancelled) onChangeImage(result.uri);
     } catch (error) {
-      console.log("error reading an image", error);
+      console.log("Error reading an image", error);
     }
   };
+
   return (
     <TouchableWithoutFeedback onPress={handlePress}>
       <View style={styles.container}>
         {!imageUri && (
           <MaterialCommunityIcons
-            name="camera"
             color={colors.medium}
+            name="camera"
             size={40}
           />
         )}
@@ -59,16 +62,19 @@ export default function ImageInput({ imageUri, onChangeImage }: any) {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
     backgroundColor: colors.light,
     borderRadius: 15,
-    justifyContent: "center",
-    alignItems: "center",
-    overflow: "hidden",
     height: 100,
+    justifyContent: "center",
+    marginVertical: 10,
+    overflow: "hidden",
     width: 100,
   },
   image: {
-    width: "100%",
     height: "100%",
+    width: "100%",
   },
 });
+
+export default ImageInput;
